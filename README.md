@@ -25,6 +25,8 @@ All of my Notebook work was done on the Kaggle platform then downloaded and push
 while the data set encompassed the 48 contiguous Sates that make up the main body of the US the scope of this analysis was focused on Conneticuts Fairfeild county. Fairfeild is located in the Southwestern corner of the State and is the most populous and fast growing county which is why it was chosen for this anlysis. ![](https://en.wikipedia.org/wiki/Fairfield_County,_Connecticut#/media/File:Map_of_Connecticut_highlighting_Fairfield_County.svg)
 
 
+
+
 Methodology section which represents the main component of the report where you discuss and describe any exploratory data analysis that you did, any inferential statistical testing that you performed, if any, and what machine learnings were used and why.
 Results section where you discuss the results.
 Discussion section where you discuss any observations you noted and any recommendations you can make based on the results.
