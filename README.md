@@ -22,7 +22,7 @@ Moosavi, Sobhan, Mohammad Hossein Samavatian, Srinivasan Parthasarathy, and Raji
 ## THE METHODOLOGY
 All of my Notebook work was done on the Kaggle platform then downloaded and pushed to this Github repository. The data was derived form a Kaggle dataset by the name of [*US Accidents (3.5 million records)*](https://www.kaggle.com/sobhanmoosavi/us-accidents) as well as a small set of png files for wordcloud masking. 
 
-while the data set encompassed the 48 contiguous Sates that make up the main body of the US the scope of this analysis was focused on Conneticuts Fairfeild county. Fairfeild is located in the Southwestern corner of the State and is the most populous and fast growing county which is why it was chosen for this anlysis. ![](https://en.wikipedia.org/wiki/Fairfield_County,_Connecticut#/media/File:Map_of_Connecticut_highlighting_Fairfield_County.svg)
+while the data set encompassed the 48 contiguous Sates that make up the main body of the US the scope of this analysis was focused on Conneticuts Fairfeild county. Fairfeild is located in the Southwestern corner of the State and is the most populous and fast growing county which is why it was chosen for this anlysis. ![](https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Map_of_Connecticut_highlighting_Fairfield_County.svg/600px-Map_of_Connecticut_highlighting_Fairfield_County.svg.png)
 
 
 
