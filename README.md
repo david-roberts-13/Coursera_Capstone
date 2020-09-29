@@ -56,9 +56,11 @@ Now that our data is ready and we have learned a bit, its time to employ a Rando
 We must first identify our final features and then convert them into dummy variables to assist our random forest. [Dummy variables](https://en.wikipedia.org/wiki/Dummy_variable_(statistics)) are a statistical tool that allows us to break columns like weather into a series of different columns for each category that includes either a 1 or 0. The code I used was as follows 
 
 #What we are trying to predict
+
 target='Severity'
 
 #What we are using to predict our target
+
 features=['Severity', 'Start_Lat', 'Start_Lng', 'Distance(mi)',
           'Side', 'City','Temperature(F)','Wind_Chill(F)', 'Humidity(%)',
           'Pressure(in)', 'Visibility(mi)','Wind_Direction', 'Wind_Speed(mph)',
@@ -66,14 +68,21 @@ features=['Severity', 'Start_Lat', 'Start_Lng', 'Distance(mi)',
           'Traffic_Signal','Sunrise_Sunset','TimeofDay', 'Season', 'Day_Type'] 
 
 #One-Hot Encoding 
+
 df_FF_Dummy=pd.get_dummies(df_FF[features],drop_first=True)
+
 print(df_FF_Dummy.info())
+
 df_FF_ML = df_FF_Dummy.reset_index()
+
 df_FF_ML=df_FF_ML.drop('index',axis=1)
+
 df_FF_ML.fillna(0)
 
 #Train Test Split is a great function to break our data down. i made test 30% of total
+
 y=df_FF_ML[target]
+
 X=df_FF_ML.drop(target, axis=1)
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=101)
@@ -81,12 +90,15 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_
 Now we must create the model and see the results. 
 
 #Running Model object
+
 clf=RandomForestClassifier(n_estimators=250)
 
 #Train Model with data
+
 clf.fit(X_train,y_train)
 
 #Run Model to predict accident Severity
+
 predictions=clf.predict(X_test)
 
 ![](https://i.imgur.com/mHiz0Nq.png)
