@@ -23,7 +23,9 @@ Moosavi, Sobhan, Mohammad Hossein Samavatian, Srinivasan Parthasarathy, and Raji
 I wrote all the code on Kaggle's platform, then downloaded and pushed it to this Github repository. The data was derived from a Kaggle dataset by the name of [*US Accidents (3.5 million records)*](https://www.kaggle.com/sobhanmoosavi/us-accidents) as well as a small set of png files for word cloud masking. 
 
 While the data set encompassed the 48 contiguous States that make up the US's main body, Connecticut's Fairfield County is at the center of this analysis. Fairfield is located in the Southwestern corner of the State and is the most populous and fast-growing county.
+
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Map_of_Connecticut_highlighting_Fairfield_County.svg/600px-Map_of_Connecticut_highlighting_Fairfield_County.svg.png)
+
 After defining our location, I corrected the boolean values into integer form and removed unnecessary ones. I dismissed 13 observations for lack of information or repeated information. I used a missing value visualization to evaluate the completeness of the data set. 
 
 ![](https://i.imgur.com/x0Rn0zT.png)
@@ -98,9 +100,11 @@ We see that it truly is location location location. It seems as that this backs 
 
 ## Results 
 I'm quite pleased with these results, given how unbalanced our target variable was. I evaluated the model on several parameters; the model's overall accuracy was just above 76%. Our confusion matrix shows us the number of each prediction and its correctness. The columns counted from severity 1 on the left to severity 4 on the right and the rows being severity 1 on the top and severity 4 on the bottom. The row represents what the model predicted, and the column is what was the actual value. Take the second row; for example, these are severity 2 values. Our model predicted on of these as severity 1 (incorrect), 765 as severity 2 (correct), 173 as severity 3 (incorrect, and 25 as severity 4 (incorrect). 
+
 ![](https://i.imgur.com/GXyeHEy.png)
 
 I also had a classifications report made, which shows us the [Precision](https://en.wikipedia.org/wiki/Precision_and_recall), which is the fraction of relevant instances among the retrieved instances, while recall is the fraction of the total amount of relevant instances that were actually retrieved. We also see the [F1 Score](https://en.wikipedia.org/wiki/F1_score), a measure of a test's accuracy. 
+
 ![](https://i.imgur.com/qPbLgpK.png)
 
 ## Discussion
