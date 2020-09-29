@@ -26,31 +26,30 @@ While the data set encompassed the 48 contiguous States that make up the US's ma
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Map_of_Connecticut_highlighting_Fairfield_County.svg/600px-Map_of_Connecticut_highlighting_Fairfield_County.svg.png)
 After defining our location, I corrected the boolean values into integer form and removed unnecessary ones. I dismissed 13 observations for lack of information or repeated information. I used a missing value visualization to evaluate the completeness of the data set. 
 
-![](https://i.imgur.com/gWlEpPA.png)
+![](https://i.imgur.com/x0Rn0zT.png)
 
 The yellow marks represent missing values. We see there are 13 columns with missing values. We will outright remove columns like he 'End_Lat/Lng' and 'Number' column as they are not useful. Then some will need imputation work like 'Wind_Speed(mph),' 'Wind_Chill(F),' and others. Some of these like 'TMC,' 'Weather_Conditions,' will require a closer examination.
 
 Mean value imputation was utilized to fill in values for 'Wind_Cill(F)', 'Wind_Speed(mph)', 'Visibility(mi)', 'Precipitation(in)', 'Temperature(F)', 'Humidity(%)', and 'Pressure(in)'. To limit our random forest's depth and breadth, I binned or Bucketed out 'Times of Day' into Early Morning, Morning, Afternoon, and Evening. Months became seasons, and 'Day of the Week' was separated into Weekday and Weekend. Below are faceted grouped bar graphs for each bucketed category and the unbucketed data used to create it. We can see both the binned or bucketed data and its raw counterpart. On the left, we have two Seaborn Countplots that show us the relation of commuting and car accident frequency and severity. We can see that the afternoon seems to be a more difficult time of day. Understandably we can expect drivers to be more tired and thus more impaired after a full day of work. One interesting takeaway from the plots on the right is that Autumn seems to be a more dangerous time to be on the road. We found this interesting because our gut would have said that New England winters would have caused a more considerable uptick in accidents than the fall weather. Possibly due to holidays involving travel and the influx of 'Leafers' people who drive through CT to get to the more northern states to see the leaf change color.
 
-(insert grouped bar charts)
+![](https://i.imgur.com/vLTBl3x.png)
 
 I'm always a sucker for good map visualization, so I was eager to employ *Folium* for this project. *Folium* is a beautiful tool for creating Leaflet maps. I used it to create two separate maps. These mapping visualizations demand a lot from our computers, so I had to minimize our data to 50% to get it to run for our first map. The map is a heat map that shows us that accidents closer to exits cause a higher degree of traffic. Which makes sense as most on and off-ramps are single lane, so it is more likely that an accident will block a more substantial part of the lane hindering traffic to a higher degree. 
 
-(Insert Heat Map)
+![](https://i.imgur.com/z63O8qT.png)
 
 The second map was far more demanding from a computational sense, so I limited our data to 1/8th of its size. Each marker represents a different severity level. As for the markers, purple is the most severe then red-orange and yellow as the lowest severity. If you would like to explore these maps yourself, head over to my notebook for the interactive versions. 
 
-(INsert Marker Map)
+![](https://i.imgur.com/SdIQVDq.png)
 
 
 The data also included a description column rich with information. These strings were used in the creation of the following masked word clouds. See if you can notice any trends within the language for each severity level. 
-(INSERT ALL 3 WORD CLOUDS)
-
+![](https://i.imgur.com/aoyosiS.png)
+![](https://i.imgur.com/ZUNh1do.png)
+![](https://i.imgur.com/DtsYAly.png)
 I see our earlier observation of the clustering around excites supported in the word clouds. As the severity increases, I also noticed a shift in language from lane blocked, to lane closed, to the road closed for the most severe. 
 
 Now that our data is ready and we have learned a bit, its time to employ a Random Forest (RF) model to understand the influence each category has on its severity. I chose a RF because the model is resistant to overfitting and does exceedingly well with high dimensionality data as we have here. 
-
-(INSERT RANDOM FOREST MODEL IMAGE)
 
 We must first identify our final features and then convert them into dummy variables to assist our random forest. [Dummy variables](https://en.wikipedia.org/wiki/Dummy_variable_(statistics)) are a statistical tool that allows us to break columns like weather into a series of different columns for each category that includes either a 1 or 0. The code I used was as follows 
 
@@ -88,23 +87,24 @@ clf.fit(X_train,y_train)
 #Run Model to predict accident Severity
 predictions=clf.predict(X_test)
 
-(Insert output image for MODEL)
+![](https://i.imgur.com/mHiz0Nq.png)
 
 
 Now let's see what our model decided was important!
 
-(INSERT GRAPH SHOWING IMPORTANCE) 
+![](https://i.imgur.com/E00fA93.png) 
 
 We see that it truly is location location location. It seems as that this backs up our exit theory from before. Interesting that precipitation scored lower than one might of thought. 
 
 ## Results 
 I'm quite pleased with these results, given how unbalanced our target variable was. I evaluated the model on several parameters; the model's overall accuracy was just above 76%. Our confusion matrix shows us the number of each prediction and its correctness. The columns counted from severity 1 on the left to severity 4 on the right and the rows being severity 1 on the top and severity 4 on the bottom. The row represents what the model predicted, and the column is what was the actual value. Take the second row; for example, these are severity 2 values. Our model predicted on of these as severity 1 (incorrect), 765 as severity 2 (correct), 173 as severity 3 (incorrect, and 25 as severity 4 (incorrect). 
-(Insert IMage of Confusion Matrix)
+![](https://i.imgur.com/GXyeHEy.png)
 
 I also had a classifications report made, which shows us the [Precision](https://en.wikipedia.org/wiki/Precision_and_recall), which is the fraction of relevant instances among the retrieved instances, while recall is the fraction of the total amount of relevant instances that were actually retrieved. We also see the [F1 Score](https://en.wikipedia.org/wiki/F1_score), a measure of a test's accuracy. 
- (INSERT CLASSIFICAITONS REPORT 
+![](https://i.imgur.com/qPbLgpK.png)
 
 ## Discussion
 When it comes to limiting traffic from accidents, decision-makers should focus all their efforts on bottlenecks within our systems. The most noticeable of the jams are our highway exits. This analysis was meant to raise attention to these choke points but not solve them as that would take a more in-depth look at each exit by someone with a higher degree of domain knowledge. The region's decision-makers should employ such a person, as a civil engineer, to evaluate and suggest improvements for the worst of the areas. As far as educating the public, we see that people should keep a closer eye on pressure; when the pressure drops, you can expect the weather to worsen, and humidity levels are a high indicator of traffic than precipitation.
+
 ## Conclusion 
-there is still much to be done to understand and limit traffic and accidents generally on a larger scale. If you would like to explore this dataset or topic in more depth, several other notebooks reside on [Kaggle.com](https://www.kaggle.com/sobhanmoosavi/us-accidents) for your exploration. Thanks for taking the time to read this and have a good day and drive safely. 
+There is still much to be done to understand and limit traffic and accidents generally on a larger scale. If you would like to explore this dataset or topic in more depth, several other notebooks reside on [Kaggle.com](https://www.kaggle.com/sobhanmoosavi/us-accidents) for your exploration. Thanks for taking the time to read this and have a good day and drive safely. 
