@@ -26,7 +26,7 @@ While the data set encompassed the 48 contiguous States that make up the US's ma
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Map_of_Connecticut_highlighting_Fairfield_County.svg/600px-Map_of_Connecticut_highlighting_Fairfield_County.svg.png)
 After defining our location, I corrected the boolean values into integer form and removed unnecessary ones. I dismissed 13 observations for lack of information or repeated information. I used a missing value visualization to evaluate the completeness of the data set. 
 
-(Insert Image of missing values graph)
+![](https://i.imgur.com/gWlEpPA.png)
 
 The yellow marks represent missing values. We see there are 13 columns with missing values. We will outright remove columns like he 'End_Lat/Lng' and 'Number' column as they are not useful. Then some will need imputation work like 'Wind_Speed(mph),' 'Wind_Chill(F),' and others. Some of these like 'TMC,' 'Weather_Conditions,' will require a closer examination.
 
