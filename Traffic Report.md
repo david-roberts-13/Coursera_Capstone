@@ -1,5 +1,5 @@
 # Fairfield Conneticut Traffic Analysis: Folium, RFC & WordCloud
-## THE PROBLEM 
+## Accidents and Traffic(THE PROBLEM) 
 *Business Problem:*
    Automotive collisions have become a ubiquitous aspect of modern life. These accidents claim the lives and livelihoods of millions of people a year all over the world.  A study by the Department of Transportation's, [National Highway Traffic Saftey Administration](https://crashstats.nhtsa.dot.gov/Api/Public/ViewPublication/812013) (NHTSA), placed a price tag of over a quarter-trillion dollars in 2010.  I have seen several projects diving into this problem from the perspective of loss of life property or employment, all of which are noble in nature. I want to explore something else, something more trivial, and infuriating TRAFFIC! That's right, and I will be analyzing and building a machine learning model to predict an accident's impact on traffic. Through analysis of observations like weather, time of year, location, and many more, we might be able to alleviate the modern leech on our precious free time.
    
